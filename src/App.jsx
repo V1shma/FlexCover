@@ -1,5 +1,6 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Layout from './components/Layout';
+import LandingPage from './pages/LandingPage';
 import Onboarding from './pages/Onboarding';
 import WorkerDashboard from './pages/WorkerDashboard';
 import AdminDashboard from './pages/AdminDashboard';
@@ -10,6 +11,7 @@ import PredictiveAlerts from './pages/PredictiveAlerts';
 function App() {
   return (
     <Routes>
+      <Route path="/" element={<LandingPage />} />
       <Route path="/onboarding" element={<Onboarding />} />
       <Route element={<Layout />}>
         <Route path="/dashboard" element={<WorkerDashboard />} />
@@ -18,7 +20,7 @@ function App() {
         <Route path="/demo" element={<DemoSimulation />} />
         <Route path="/alerts" element={<PredictiveAlerts />} />
       </Route>
-      <Route path="*" element={<Navigate to="/onboarding" replace />} />
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
 }
