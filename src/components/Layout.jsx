@@ -10,7 +10,7 @@ const navItems = [
     { path: '/admin', label: 'Admin Panel', icon: BarChart3 },
     { path: '/claims', label: 'Claims', icon: Shield },
     { path: '/alerts', label: 'Risk Alerts', icon: Bell },
-    { path: '/demo', label: 'Demo Mode', icon: Zap },
+    { path: '/demo', label: 'Tactical Simulator', icon: Zap },
 ];
 
 export default function Layout() {

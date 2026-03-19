@@ -230,9 +230,14 @@ app.post('/api/disruptions/simulate', (req, res) => {
     const fraudResults = newClaims.map(c => {
         const worker = store.workers.find(w => w.id === c.workerId);
         const result = checkFraud(c, store.claims, worker);
+        
+        // Attach details so frontend can show them
+        c.status = result.verdict;
+        c.anomalyScore = result.anomalyScore;
+        c.fraudFlags = result.flags;
+
         if (result.verdict !== 'clean') {
             store.fraudAlerts.push(result);
-            c.status = 'flagged';
         }
         return result;
     });

@@ -68,7 +68,8 @@ function generateWorkers() {
         const platform = PLATFORMS[i % PLATFORMS.length];
         const avgHours = 6 + Math.floor(Math.random() * 6); // 6-11 hrs
         const avgEarnings = 400 + Math.floor(Math.random() * 600); // ₹400-1000/day
-
+        const ips = ['192.168.1.10', '192.168.1.15', '203.0.113.45', '198.51.100.2']; // Simulate a cluster for rings
+        const devices = ['DEV-A1B2', 'DEV-C3D4', 'DEV-E5F6'];
         return {
             id: randomUUID(),
             name,
@@ -79,8 +80,11 @@ function generateWorkers() {
             zone: zone,
             avgDailyHours: avgHours,
             avgDailyEarnings: avgEarnings,
-            joinedAt: new Date(Date.now() - Math.random() * 90 * 24 * 60 * 60 * 1000).toISOString(),
+            joinedAt: new Date(Date.now() - Math.random() * 365 * 24 * 60 * 60 * 1000).toISOString(), // Up to 1 yr ago
             isActive: true,
+            ipAddress: ips[i % ips.length],
+            deviceId: devices[i % devices.length],
+            payoutAccountId: `UPI-${9000000000 + (i%5) * 1111111}`, // Simulate 5 UPIs shared among all
         };
     });
 }

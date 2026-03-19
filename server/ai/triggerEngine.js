@@ -74,6 +74,9 @@ export function processTriggeredClaims(disruption, workers, policies) {
         const incomeLoss = expectedEarnings - actualEarnings;
         const payoutAmount = Math.min(incomeLoss, Math.round(policy.coverageLimit / 7));
 
+        // Let's make ~10% of workers "offline" during the event, a huge red flag
+        const platformActive = Math.random() > 0.10; 
+
         return {
             id: randomUUID(),
             workerId: w.id,
@@ -90,6 +93,9 @@ export function processTriggeredClaims(disruption, workers, policies) {
             incomeLoss,
             payoutAmount,
             status: 'approved',
+            ipAddress: w.ipAddress,
+            deviceId: w.deviceId,
+            platformActive,
             createdAt: new Date().toISOString(),
             processedAt: new Date(Date.now() + 30000).toISOString(),
         };
