@@ -20,26 +20,26 @@ In this final phase, FlexCover has evolved from a simple trigger system into a *
 
 ```mermaid
 graph TD
-    subgraph "External Truth Sources"
+    subgraph TruthSources [External Truth Sources]
         W[Weather Stations] --> PE[Parametric Engine]
         G[Flood Plane Data] --> PE
         S[Satellite AQI] --> PE
     end
 
-    subgraph "FlexCover AI Core"
+    subgraph AICore [FlexCover AI Core]
         PE --> TR[Trigger Logic]
         TR --> FD[Adversarial Fraud Detector]
         U[User Telemetry] --> FD
         FD --> AD[Anomaly Detection Score]
         
-        AD -->|Low Score| AP[Auto-Approve]
-        AD -->|High Score| RF[Flag for Review]
+        AD --- LS{Low Score} --> AP[Auto-Approve]
+        AD --- HS{High Score} --> RF[Flag for Review]
         
         AP --> GAI[Gemini reasoning]
         GAI --> WD[Worker Dashboard]
     end
 
-    subgraph "Payout Infrastructure"
+    subgraph Payouts [Payout Infrastructure]
         AP --> UPIS[UPI Simulator]
         UPIS --> MC[Money Credited]
     end
