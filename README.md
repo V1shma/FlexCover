@@ -3,6 +3,8 @@
 
 FlexCover AI is a state-of-the-art parametric insurance platform built for the 10 million+ delivery partners in India's gig economy. It provides **zero-touch income protection** against external disruptions like extreme weather, floods, and pollution, ensuring that the backbone of the digital economy has a safety net when they need it most.
 
+🌍 **Live Demo:** [https://flex-cover.vercel.app/](https://flex-cover.vercel.app/)
+
 ---
 
 ## 🚀 The Vision: Phase 3 "Scale & Optimise"
